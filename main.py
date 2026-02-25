@@ -12,6 +12,7 @@ import os
 
 app = FastAPI(title="WasteWise API", version="1.0.0")
 
+#after importing libraries
 # Allow frontend to talk to backend
 app.add_middleware(
     CORSMiddleware,
