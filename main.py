@@ -21,6 +21,41 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ── Load model on startup ──────────────────────────────────────────────────
+MODEL_DIR = os.path.join(os.path.dirname(__file__), "wastewise_model")
+CONFIG_PATH = os.path.join(MODEL_DIR, "config.json")
+WEIGHTS_PATH = os.path.join(MODEL_DIR, "model_weights.pth")
+
+with open(CONFIG_PATH) as f:
+    config = json.load(f)
+
+CLASS_NAMES = config["class_names"]
+IMG_SIZE = config["img_size"]
+DEVICE = torch.device("cpu")  # CPU is fine for inference
+
+def load_model():
+    model = models.mobilenet_v2(weights=None)
+    in_features = model.classifier[1].in_features
+    model.classifier = nn.Sequential(
+        nn.Dropout(0.3),
+        nn.Linear(in_features, 256),
+        nn.ReLU(),
+        nn.Dropout(0.2),
+        nn.Linear(256, len(CLASS_NAMES))
+    )
+    model.load_state_dict(torch.load(WEIGHTS_PATH, map_location=DEVICE))
+    model.eval()
+    return model
+
+model = load_model()
+print(f"✅ Model loaded | Classes: {CLASS_NAMES}")
+
+# ── Image transform ────────────────────────────────────────────────────────
+transform = transforms.Compose([
+    transforms.Resize((IMG_SIZE, IMG_SIZE)),
+    transforms.ToTensor(),
+    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+])
 
 # ── Disposal instructions per category ────────────────────────────────────
 DISPOSAL_INFO = {
