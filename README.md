@@ -11,16 +11,16 @@ TechThrive March '26 Hackathon Project
 ```
 wastewise/
 ├── backend/
-│   ├── main.py              ← FastAPI server
-│   ├── requirements.txt     ← Python dependencies
-│   └── wastewise_model/     ← ⚠️ Place your trained model here
+│   ├── main.py                     (FastAPI server)
+│   ├── requirements.txt            (Python dependencies)
+│   └── wastewise_model/            (Place your trained model here)
 │       ├── model_weights.pth
 │       ├── model_traced.pt
 │       └── config.json
 └── frontend/
     ├── src/
-    │   ├── App.jsx          ← Main React component
-    │   └── main.jsx         ← Entry point
+    │   ├── App.jsx           (Main React component)
+    │   └── main.jsx          (Entry point)
     ├── index.html
     ├── package.json
     └── vite.config.js
@@ -63,13 +63,13 @@ uvicorn main:app --reload --port 8000
 
 You should see:
 ```
-✅ Model loaded | Classes: ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
+Model loaded | Classes: ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
 INFO:     Uvicorn running on http://127.0.0.1:8000
 ```
 
 Test it's working: open http://localhost:8000 in your browser. You should see:
 ```json
-{"message": "WasteWise API is running 🌱", "version": "1.0.0"}
+{"message": "WasteWise API is running ", "version": "1.0.0"}
 ```
 
 ---
@@ -116,10 +116,10 @@ Open http://localhost:5173 in your browser — WasteWise is running!
 
 | Category | Disposal |
 |----------|----------|
-| 📦 Cardboard | Flatten & Recycle |
-| 🫙 Glass | Glass Recycling Bin |
-| 🥫 Metal | Rinse & Recycle |
-| 📄 Paper | Paper Recycling Bin |
-| 🧴 Plastic | Check Symbol & Recycle |
-| 🗑️ Trash | General Waste |
+|  Cardboard | Flatten & Recycle |
+| Glass | Glass Recycling Bin |
+| Metal | Rinse & Recycle |
+|  Paper | Paper Recycling Bin |
+|  Plastic | Check Symbol & Recycle |
+| Trash | General Waste |
 # WiseWaste-Backend

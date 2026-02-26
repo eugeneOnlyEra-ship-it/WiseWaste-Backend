@@ -3,12 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import torch
 import torchvision.transforms as transforms
-from torchvision import models
-import torch.nn as nn
-from PIL import Image
-import io
-import json
-import os
 
 app = FastAPI(title="WasteWise API", version="1.0.0")
 
