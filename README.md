@@ -1,8 +1,7 @@
-# 🗑️ WasteWise
+# WasteWise
 
 > Photograph your waste. Know exactly how to dispose of it.
 
-TechThrive March '26 Hackathon Project
 
 ---
 
